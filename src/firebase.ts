@@ -1,4 +1,4 @@
-import firebase from 'firebase-admin';
+import firebase from 'firebase';
 import { config } from 'dotenv';
 config();
 
@@ -13,7 +13,7 @@ const firebaseConfig = {
   };
  
   if(!firebase.apps.length) {
-      firebase.initializeApp(firebaseConfig);
+      firebase.initializeApp(firebaseConfig)
   } else {
       firebase.app();
   }
