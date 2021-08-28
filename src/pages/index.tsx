@@ -9,7 +9,7 @@ const Home: React.FC = () =>  {
   const [user, setUser] = useState<IUser>()
   return (
     <div className={styles.container}>
-    
+      
     </div>
   )
 }
