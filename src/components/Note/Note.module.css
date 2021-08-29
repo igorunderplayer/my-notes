@@ -1,3 +1,8 @@
 .container {
     background: #fff;
+    border-bottom: #5b19d4 solid 3px;
+    min-width: 12rem;
+    min-height: 5rem;
+    break-inside: avoid-column;
+    border-radius: 8px;
 }

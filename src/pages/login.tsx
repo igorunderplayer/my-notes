@@ -11,10 +11,14 @@ const Login: React.FC = () => {
     const [password, setPassword] = useState('');
 
     function login () {
-        axios.post('/api/auth', { username, password })
-        .then(res => {
-            localStorage.setItem('token', res.data.token);
-            router.push('/');
+            axios.post('/api/users/login', { username, password })
+            .then(res => {
+                if(res.status == 404) {
+                    alert('Account not found!')
+                    return;
+                }
+                localStorage.setItem('token', res.data.token);
+                router.push('/');
         })
     }
 
