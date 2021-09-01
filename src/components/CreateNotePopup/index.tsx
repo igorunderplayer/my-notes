@@ -25,7 +25,7 @@ const CreateNotePopup: React.FC<Props> = ({ handleClose, onCreateNote }) => {
 
             <div className={styles.itens}>
                         <div className={styles.svg}>
-                            <Image alt="" src="/undraw_text_field.svg" height={512} width={512} />
+                            <Image alt="" src="/undraw_add_document.svg" height={512} width={512} />
                         </div>
 
                         <div className={styles.inputs}>

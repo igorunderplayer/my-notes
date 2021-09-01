@@ -33,14 +33,15 @@
 }
 
 .svg {
-    margin-right: -10px
+    margin-right: -10px;
+    width: 50%;
 }
 
 .inputs {
     border-bottom: #817aff83 1px solid;
     border-right: #817aff83 1px solid;
     align-items: center;
-    width: 60%;
+    width: 50%;
     background: #f2f2f2;
     padding: 7.5% 12px;
     display: flex;

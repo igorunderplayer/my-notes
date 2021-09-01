@@ -1,3 +1,28 @@
+@media screen and (min-width: 700px) {
+  .notes {
+    column-count: 2;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .notes {
+    column-count: 4;
+  }
+}
+
+
+@media screen and (min-width: 1200px) {
+  .notes {
+    column-count: 5;
+  }
+}
+
+@media screen and (min-width: 1900px) {
+  .notes {
+    column-count: 7;
+  }
+}
+
 .container {
   min-height: 100vh;
   padding: 0 0.5rem;
@@ -10,5 +35,4 @@
 
 .notes {
   margin-top: 2%;
-  column-count: 5;
 }
