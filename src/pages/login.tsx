@@ -5,6 +5,8 @@ import Image from 'next/image'
 import { useRouter } from 'next/router';
 import axios from 'axios';
 
+import firebase from 'firebase'
+
 const Login: React.FC = () => {
     const router = useRouter();
     const [username, setUsername] = useState('');
@@ -28,7 +30,9 @@ const Login: React.FC = () => {
                 <h1>Faça login!</h1>
 
                 <div className={styles.itens}>
-                    <Image alt="" src="/undraw_fall.svg" height={512} width={512} />
+                    <div className={styles.svg}>
+                        <Image alt="" src="/undraw_fall.svg" height={512} width={512} />
+                    </div>
 
                     <div className={styles.inputs}>
                         <input placeholder="Digite seu nome de usuario aqui" onChange={(e) => setUsername(e.target.value)}/>

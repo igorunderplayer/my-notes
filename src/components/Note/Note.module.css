@@ -1,8 +1,24 @@
 .container {
-    background: #fff;
+    font-family: sans-serif;
     border-bottom: #5b19d4 solid 3px;
     min-width: 12rem;
+    max-width: 15.8rem;
     min-height: 5rem;
     break-inside: avoid-column;
     border-radius: 8px;
+    padding: 0 6px;
+    background: #ebeaff;
+    color: #2f2e41;
+    margin-bottom: 5%
+}
+
+.container h2 {
+    margin: 0;
+    border-bottom: #2f2e41 1px solid;
+    color: #2a2a33;
+    text-align: center;
+}
+
+.container p {
+    padding: 1px 2px
 }

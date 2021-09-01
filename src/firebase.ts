@@ -1,6 +1,4 @@
 import firebase from 'firebase';
-import { config } from 'dotenv';
-config();
 
 const firebaseConfig = {
     apiKey: process.env.API_KEY,

@@ -8,12 +8,16 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     switch (req.method) {
         case 'GET':
             if (
-                !req.headers?.token || typeof req.headers.token !== "string" || !/Bearer .+/g.test(req.headers.token) ) return res.status(400).send('Bad request!');
+                !req.headers?.token || typeof req.headers.token !== "string") return res.status(400).send('Bad request!');
 
                 let decode;
 
               try {
-                   decode = jwt.verify(req.headers.token.slice(7), secret)
+                   decode = jwt.verify(req.headers.token, secret)
+                   if(!decode) {
+                       res.status(400)
+                       return;
+                   }
               } catch (err) {
                 res.status(400);
               }

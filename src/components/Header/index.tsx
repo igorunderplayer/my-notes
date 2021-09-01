@@ -6,10 +6,10 @@ import styles from './Header.module.css'
 const Header: React.FC = () => {
   return (
       <div className={styles.header}>
-          <ul>
+          {/* <div className={styles.links}>
             <Link href="/">Home</Link>
             <Link href="/login">Login</Link>
-          </ul>
+          </div> */}
       </div>
   );
 }

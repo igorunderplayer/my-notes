@@ -9,7 +9,8 @@ interface Props {
 const Note: React.FC<Props> = ({ data }) => {
   return (
       <div className={styles.container}>
-        { data.title }
+        <h2>{data.title}</h2>
+          <p>{data.value}</p>
       </div>
   )
 }
