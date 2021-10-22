@@ -1,0 +1,81 @@
+.container {
+    min-height: 100vh;
+    padding: 0 0.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .login {
+      margin-top: -20px;
+      min-width: 65%;
+      border-radius: 12px;
+      color: #fff;
+      font-family: Arial, Helvetica, sans-serif;
+      display: flex;
+      background: #6C63FF;
+      align-items: center;
+      flex-direction: column
+  }
+  
+  .login h1 {
+      font-size: 1.7rem;
+  }
+  
+  .itens {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      padding-left: 2px;
+      background: #fff;
+  }
+  
+  .svg {
+      width: 50%;
+  }
+  
+  .inputs {
+      border-bottom: #817aff83 1px solid;
+      border-right: #817aff83 1px solid;
+      align-items: center;
+      min-width: 50%;
+      background: #f2f2f2;
+      padding: 7.5% 12px;
+      display: flex;
+      flex-direction: column;
+  }
+  
+  .inputs Input {
+      background-color: #e9e8e8;
+      border: none;
+      height: 13%;
+      width: 70%;
+      margin: 1rem;
+      border-radius: 8px;
+      outline: none;
+  }
+  
+  .buttons {
+      justify-content: center;
+      align-items: center;
+      display: flex;
+      flex-direction: row;
+  }
+  
+  .buttons button {
+      background: #cbc8ff;
+      color: #2f2e41;
+      border: none;
+      width: 6rem;
+      height: 2.5rem;
+      cursor: pointer;
+      transition: background-color 0.5s
+  }
+
+
+  
+  .buttons :hover {
+      background-color: #e9e8ff;
+  }

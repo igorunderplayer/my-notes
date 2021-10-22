@@ -1,6 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import jwt from 'jsonwebtoken';
 import { firestore } from '../../firebase';
+import firebase from 'firebase';
 
 const secret = process.env.SECRET
 
@@ -38,20 +39,20 @@ async function getNotes (req: NextApiRequest, res: NextApiResponse) {
   const accounts = firestore.collection('accounts')
 
   const filtered = await accounts
-  .where('id', '==', decode.account)
-  .get()
+      .where(firebase.firestore.FieldPath.documentId(), '==', decode.account)
+      .get()
 
   const account = filtered.docs[0]?.data();
   if(!account) return res.status(400)
 
   const id = filtered.docs[0].id;
-  const notes = (await firestore.collection('accounts').doc(id).collection('notes').get()).docs.map(doc => {
+  const notes = (await firestore.collection('accounts').doc(id).collection('notes').get())?.docs?.map(doc => {
       return {
           title: doc.data().title,
           value: doc.data().value,
           id: doc.id
       }
-  });
+  }) ?? [];
   return res.status(200).json(notes);
 }
 
@@ -79,8 +80,8 @@ async function createNote(req: NextApiRequest, res: NextApiResponse) {
     const accounts = firestore.collection('accounts')
 
     const snapshot = await accounts
-    .where('id', '==', decode.account)
-    .get()
+      .where(firebase.firestore.FieldPath.documentId(), '==', decode.account)
+      .get()
 
     if(snapshot.empty) return res.status(400);
 

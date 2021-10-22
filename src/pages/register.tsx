@@ -1,37 +1,38 @@
 import React, { useState } from 'react';
-import styles from '../styles/Login.module.css'
-
 import Image from 'next/image'
 import { useRouter } from 'next/router';
 import axios from 'axios';
 
-import Link from 'next/link'
+import styles from '../styles/Register.module.css'
 
-const Login: React.FC = () => {
+const Register: React.FC = () => {
     const router = useRouter();
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
-    function login () {
-            axios.post('/api/users/login', { username, password })
+    function register () {
+            axios.post('/api/users/me', { username, password })
             .then(res => {
-                if(res.status == 404) {
-                    alert('Account not found!')
+                if (res.status == 200) {
+                    alert('Sua conta foi criada com sucesso, você sera redirecionado!')
+                    router.push('/login')
+                    return;
+                } else {
+                    alert(`Não foi possivel registra-lo, erro: ${res.data.message}`)
+                    router.push('/')
                     return;
                 }
-                localStorage.setItem('token', res.data.token);
-                router.push('/');
         })
     }
 
   return (
       <div className={styles.container}>
             <div className={styles.login}>
-                <h1>Faça login!</h1>
+                <h1>Registre-se!</h1>
 
                 <div className={styles.itens}>
                     <div className={styles.svg}>
-                        <Image alt="" src="/undraw_fall.svg" height={512} width={512} />
+                        <Image alt="" src="/undraw_before_dawn_.svg" height={512} width={512} />
                     </div>
 
                     <div className={styles.inputs}>
@@ -39,8 +40,7 @@ const Login: React.FC = () => {
                         <input placeholder="Digite sua senha aqui" type="password" onChange={(e) => setPassword(e.target.value)} />
 
                         <div className={styles.buttons}>
-                            <button type="submit" onClick={login}>Login</button>
-                            <Link href="/register"><button type="submit">Register</button></Link>
+                            <button type="submit" onClick={register}>Register</button>
                         </div>
                     </div>
                 </div>
@@ -49,4 +49,4 @@ const Login: React.FC = () => {
   )
 }
 
-export default Login;
+export default Register;

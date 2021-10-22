@@ -1,6 +1,8 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import jwt from 'jsonwebtoken'
 import { firestore } from "../../../firebase";
+
+import jwt from 'jsonwebtoken'
+import firebase from 'firebase'
 
 const secret = process.env.SECRET;
 
@@ -26,7 +28,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
               const accounts = firestore.collection('accounts')
         
               const filtered = await accounts
-              .where('id', '==', decode.account)
+              .where(firebase.firestore.FieldPath.documentId(), '==', decode.account)
               .get()
         
               const account = filtered.docs[0]?.data();
@@ -37,6 +39,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             break;
 
         case 'POST':
+              await createAccount(req, res);
             break;
 
         default:
@@ -44,4 +47,34 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                 return;
             break;
     }
+}
+
+async function createAccount(req: NextApiRequest, res: NextApiResponse) {
+    const username = req.body.username;
+    const password = req.body.password;
+
+    if(!username || !password) {
+        res.status(400);
+        return;
+    }
+
+    const accountsRef = firestore.collection('accounts')
+
+    const filtered = await accountsRef
+    .where('username', '==', username)
+    .get()
+
+    if(filtered.docs[0]?.data()) {
+        res.status(400).json({ message: 'Account alread exists' })
+        return;
+    }
+
+    const doc = await accountsRef.add({
+        username,
+        password
+    })
+
+    res.status(200).json({
+        message: 'Account created!'
+    })
 }

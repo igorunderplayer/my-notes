@@ -18,12 +18,12 @@ export default async function handler (req: NextApiRequest, res: NextApiResponse
     .where('password', '==', password)
     .get()
 
-    const account = filtered.docs[0]?.data();
+    const accountId = filtered.docs[0]?.id
 
-    if(!account) return res.status(404).json({ message: 'Account not found!' })
+    if(!accountId) return res.status(404).json({ message: 'Account not found!' })
      return res.status(200).json({
          token: jwt.sign(
-             { account: account.id },
+             { account: accountId },
              secret
          )
      })

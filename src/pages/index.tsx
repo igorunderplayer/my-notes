@@ -80,6 +80,11 @@ const Home: React.FC = () =>  {
     }
   }, [router])
 
+  function logout () {
+    localStorage.removeItem('token');
+    router.reload();
+  }
+
   return (
     <div className={styles.container}>
       { !user ? <></> : (
@@ -89,6 +94,12 @@ const Home: React.FC = () =>  {
             top: 0,
             right: 0
           }}>Adicionar nova nota</button>
+
+          <button onClick={logout} style={{
+            position: 'absolute',
+            top: 0,
+            left: 0
+          }}>Logout...</button>
 
           { isOpen && <CreateNotePopup onCreateNote={createNote} handleClose={() => setIsOpen(!isOpen)} /> }
 
