@@ -92,13 +92,19 @@ const Home: React.FC = () =>  {
           <button onClick={() => setIsOpen(!isOpen)} style={{
             position: 'absolute',
             top: 0,
-            right: 0
+            right: 0,
+            backgroundColor: '#fff',
+            border: 'none',
+            borderBottomLeftRadius: 12
           }}>Adicionar nova nota</button>
 
           <button onClick={logout} style={{
             position: 'absolute',
             top: 0,
-            left: 0
+            left: 0,
+            backgroundColor: '#fff',
+            border: 'none',
+            borderBottomRightRadius: 12
           }}>Logout...</button>
 
           { isOpen && <CreateNotePopup onCreateNote={createNote} handleClose={() => setIsOpen(!isOpen)} /> }
