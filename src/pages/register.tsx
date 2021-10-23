@@ -3,6 +3,8 @@ import Image from 'next/image'
 import { useRouter } from 'next/router';
 import axios from 'axios';
 
+import Link from 'next/link'
+
 import styles from '../styles/Register.module.css'
 
 const Register: React.FC = () => {
@@ -18,11 +20,13 @@ const Register: React.FC = () => {
                     router.push('/login')
                     return;
                 } else {
-                    alert(`Não foi possivel registra-lo, erro: ${res.data.message}`)
-                    router.push('/')
-                    return;
+                    
                 }
-        })
+            }).catch(e => {
+                alert(`Não foi possivel registra-lo, erro: ${e.response.data.message}`)
+                router.push('/')
+                return;
+            })
     }
 
   return (
@@ -32,7 +36,7 @@ const Register: React.FC = () => {
 
                 <div className={styles.itens}>
                     <div className={styles.svg}>
-                        <Image alt="" src="/undraw_before_dawn_.svg" height={512} width={512} />
+                        <Image alt="" src="/undraw_Welcome.svg" height={512} width={512} />
                     </div>
 
                     <div className={styles.inputs}>
@@ -41,6 +45,7 @@ const Register: React.FC = () => {
 
                         <div className={styles.buttons}>
                             <button type="submit" onClick={register}>Register</button>
+                            <Link href='/login' passHref><span className={styles.link}>Voltar ao inicio</span></Link>
                         </div>
                     </div>
                 </div>

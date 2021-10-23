@@ -54,6 +54,7 @@ async function createAccount(req: NextApiRequest, res: NextApiResponse) {
     const password = req.body.password;
 
     if(!username || !password) {
+        console.log('e')
         res.status(400);
         return;
     }

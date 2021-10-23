@@ -12,7 +12,9 @@ const Login: React.FC = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
-    function login () {
+    function login (e: React.FormEvent) {
+        e.preventDefault()
+        console.log('oi')
             axios.post('/api/users/login', { username, password })
             .then(res => {
                 if(res.status == 404) {
@@ -34,15 +36,15 @@ const Login: React.FC = () => {
                         <Image alt="" src="/undraw_fall.svg" height={512} width={512} />
                     </div>
 
-                    <div className={styles.inputs}>
+                    <form className={styles.inputs} onSubmit={login}>
                         <input placeholder="Digite seu nome de usuario aqui" onChange={(e) => setUsername(e.target.value)}/>
                         <input placeholder="Digite sua senha aqui" type="password" onChange={(e) => setPassword(e.target.value)} />
 
                         <div className={styles.buttons}>
                             <button type="submit" onClick={login}>Login</button>
-                            <Link href="/register"><button type="submit">Register</button></Link>
+                            <Link href="/register" passHref><button type="submit">Register</button></Link>
                         </div>
-                    </div>
+                    </form>
                 </div>
             </div>
       </div>
