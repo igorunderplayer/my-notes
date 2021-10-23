@@ -1,3 +1,10 @@
+@media screen and (max-width: 700px) {
+    .box {
+        width: 95%;
+        height: 95%;
+    }
+  }
+
 .container {
     position: fixed;
     background: #00000050;
@@ -10,10 +17,10 @@
 .box {
     padding-left: 4px;
     position: relative;
-    width: 70%;
+    min-width: 70%;
+    max-width: 90%;
     margin: 0 auto;
-    height: auto;
-    max-height: 70vh;
+    max-height: 85vh;
     margin-top: 10%;
     background: #fff;
     border-radius: 8px;
