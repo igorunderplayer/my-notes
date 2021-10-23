@@ -1,3 +1,9 @@
+@media screen and (max-width: 700px) {
+    .svg {
+        display: none;
+    }
+  }
+
 .container {
   min-height: 100vh;
   padding: 0 0.5rem;
@@ -44,6 +50,7 @@
     border-right: #817aff83 1px solid;
     align-items: center;
     min-width: 60%;
+    width: 100%;
     background: #f2f2f2;
     padding: 7.5% 12px;
     display: flex;
