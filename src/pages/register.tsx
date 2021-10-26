@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
+
 import Image from 'next/image'
+import Head from 'next/head'
+
 import { useRouter } from 'next/router';
 import axios from 'axios';
 
@@ -31,6 +34,10 @@ const Register: React.FC = () => {
 
   return (
       <div className={styles.container}>
+          <Head>
+              <title>MyNotes - Registre-se</title>
+          </Head>
+
             <div className={styles.login}>
                 <h1>Registre-se!</h1>
 

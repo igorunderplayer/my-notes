@@ -6,6 +6,7 @@ import { useRouter } from 'next/router';
 import axios from 'axios';
 
 import Link from 'next/link'
+import Head from 'next/head';
 
 const Login: React.FC = () => {
     const router = useRouter();
@@ -28,6 +29,10 @@ const Login: React.FC = () => {
 
   return (
       <div className={styles.container}>
+          <Head>
+              <title>MyNotes - Login</title>
+          </Head>
+
             <div className={styles.login}>
                 <h1>Faça login!</h1>
 

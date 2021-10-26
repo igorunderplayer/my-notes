@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { useRouter } from 'next/dist/client/router'
+import Head from 'next/head'
 import React, { useEffect, useState } from 'react'
 import CreateNotePopup from '../components/CreateNotePopup'
 import Note from '../components/Note'
@@ -87,6 +88,9 @@ const Home: React.FC = () =>  {
 
   return (
     <div className={styles.container}>
+      <Head>
+              <title>MyNotes</title>
+      </Head>
       { !user ? <></> : (
         <>
           <button onClick={() => setIsOpen(!isOpen)} style={{
