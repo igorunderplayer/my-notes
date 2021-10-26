@@ -95,7 +95,8 @@ const Home: React.FC = () =>  {
             right: 0,
             backgroundColor: '#fff',
             border: 'none',
-            borderBottomLeftRadius: 12
+            borderBottomLeftRadius: 12,
+            cursor: 'pointer'
           }}>Adicionar nova nota</button>
 
           <button onClick={logout} style={{
@@ -104,13 +105,14 @@ const Home: React.FC = () =>  {
             left: 0,
             backgroundColor: '#fff',
             border: 'none',
-            borderBottomRightRadius: 12
+            borderBottomRightRadius: 12,
+            cursor: 'pointer'
           }}>Logout...</button>
 
           { isOpen && <CreateNotePopup onCreateNote={createNote} handleClose={() => setIsOpen(!isOpen)} /> }
 
           <div className={styles.notes}>
-            { notes.map((note, i) => <Note key={i} data={note} />) }
+            { notes.map((note, i) => <Note key={i} data={note} onDeleteNote={getNotes} />) }
           </div>
         </>
       )}
