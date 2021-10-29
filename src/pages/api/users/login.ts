@@ -1,4 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next';
+
+import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken';
 import { firestore } from '../../../firebase';
 
@@ -15,12 +17,26 @@ export default async function handler (req: NextApiRequest, res: NextApiResponse
 
     const filtered = await accounts
     .where('username', '==', username)
-    .where('password', '==', password)
     .get()
+
+    if(!filtered.docs.length) {
+        return res.status(404).json({ message: 'account.notfound' })
+    }
+
+    const account = filtered.docs[0]?.data()
+
+    const compare = await bcrypt.compare(password, account.password)
+
+    if(!compare) {
+        res.status(401).json({
+            message: 'password.incorrect'
+        })
+
+        return
+    }
 
     const accountId = filtered.docs[0]?.id
 
-    if(!accountId) return res.status(404).json({ message: 'Account not found!' })
      return res.status(200).json({
          token: jwt.sign(
              { account: accountId },

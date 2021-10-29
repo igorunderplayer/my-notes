@@ -1,6 +1,7 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { firestore } from "../../../firebase";
 
+import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
 import firebase from 'firebase'
 
@@ -51,10 +52,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
 async function createAccount(req: NextApiRequest, res: NextApiResponse) {
     const username = req.body.username;
-    const password = req.body.password;
+    const passwordString = req.body.password;
 
-    if(!username || !password) {
-        console.log('e')
+    if(!username || !passwordString) {
         res.status(400);
         return;
     }
@@ -66,9 +66,12 @@ async function createAccount(req: NextApiRequest, res: NextApiResponse) {
     .get()
 
     if(filtered.docs[0]?.data()) {
-        res.status(400).json({ message: 'Account alread exists' })
+        res.status(400).json({ message: 'account.exists' })
         return;
     }
+
+    const salt = await bcrypt.genSalt(13)
+    const password = await bcrypt.hash(passwordString, salt)
 
     const doc = await accountsRef.add({
         username,

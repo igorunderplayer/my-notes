@@ -9,7 +9,9 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@types/bcrypt": "^5.0.0",
     "axios": "^0.21.1",
+    "bcrypt": "^5.0.1",
     "dotenv": "^10.0.0",
     "firebase": "^8.9.1",
     "jsonwebtoken": "^8.5.1",
