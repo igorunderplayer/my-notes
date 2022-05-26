@@ -90,6 +90,7 @@ const Home: React.FC = () =>  {
     <div className={styles.container}>
       <Head>
               <title>MyNotes</title>
+              <meta name="google-site-verification" content="ehK0bz_HCy0_V4VME8F0fZz1XMBOS1O9Ld-oXlf_DhY" /> { /* Testing */ }
       </Head>
       { !user ? <></> : (
         <>
